@@ -1,0 +1,51 @@
+{
+  "project_title": "Historical METR-LA Traffic Speed Forecasting (Phase 1 Baseline & Classical ML System)",
+  "dataset_name": "METR-LA (Los Angeles County Highway Loop Detectors)",
+  "benchmark_citation": "Li, Y., Yu, R., Shahabi, C., & Liu, Y. (2018). Diffusion Convolutional Recurrent Neural Network: Data-Driven Traffic Forecasting. International Conference on Learning Representations (ICLR 2018).",
+  "provenance_date": "2026-10-28",
+  "files": [
+    {
+      "relative_path": "data/raw/metr-la.h5",
+      "description": "Raw speed readings from 207 loop detector stations on Los Angeles County highways sampled at 5-minute intervals between 2012-03-01 00:00:00 and 2012-06-27 23:55:00.",
+      "measurement_unit": "miles per hour (mph)",
+      "num_timestamps": 34272,
+      "num_sensors": 207,
+      "file_size_bytes": 57038056,
+      "sha256": "64784b76d6fb8ec9bff4b6decafb354da2bb37840468fdccee5044e511277c05",
+      "upstream_url": "https://huggingface.co/datasets/jimmygao3218/METRLA/resolve/main/metr-la.h5",
+      "canonical_source": "https://github.com/liyaguang/DCRNN (Google Drive ID: 10FOTa6HXPqX8Pf5WRoRwcFnW9BrNZEIX)"
+    },
+    {
+      "relative_path": "data/sensor_graph/graph_sensor_ids.txt",
+      "description": "Ordered comma-delimited list of 207 unique California PeMS sensor identification numbers defining canonical graph node sequence.",
+      "num_sensors": 207,
+      "file_size_bytes": 1448,
+      "sha256": "3ba026caa2e6263ab0ea54b0fa1b125dbfa7216544cd05313b555e826292b990",
+      "upstream_url": "https://raw.githubusercontent.com/liyaguang/DCRNN/master/data/sensor_graph/graph_sensor_ids.txt"
+    },
+    {
+      "relative_path": "data/sensor_graph/distances_la_2012.csv",
+      "description": "Pairwise road network shortest-path distances between sensor stations computed along the highway topology in meters.",
+      "num_rows": 295374,
+      "file_size_bytes": 6393348,
+      "sha256": "a576a2a3e28dbb959be6da22688e24dd1b246b81264595e129147c256cd53de5",
+      "upstream_url": "https://raw.githubusercontent.com/liyaguang/DCRNN/master/data/sensor_graph/distances_la_2012.csv"
+    },
+    {
+      "relative_path": "data/sensor_graph/graph_sensor_locations.csv",
+      "description": "Geographical latitude and longitude coordinates for all 207 loop detector stations.",
+      "num_sensors": 207,
+      "file_size_bytes": 6341,
+      "sha256": "eb8ea96e07358b45d0e4ba3b89c2673fa20c54af50150249e627389e749ade6f",
+      "upstream_url": "https://raw.githubusercontent.com/liyaguang/DCRNN/master/data/sensor_graph/graph_sensor_locations.csv"
+    },
+    {
+      "relative_path": "data/sensor_graph/adj_mx.pkl",
+      "description": "Precomputed Gaussian thresholded directed adjacency matrix (207x207) with standard DCRNN normalized kernel k=0.1.",
+      "shape": [207, 207],
+      "file_size_bytes": 680459,
+      "sha256": "a35687c6e15aa228dc45027b0ed2a0ea0f4ec78f573deb992c595092d12f61b3",
+      "upstream_url": "https://huggingface.co/datasets/jimmygao3218/METRLA/resolve/main/adj_mx.pkl"
+    }
+  ]
+}
