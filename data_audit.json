@@ -1,0 +1,61 @@
+{
+  "dataset_name": "METR-LA",
+  "units": "miles per hour (mph)",
+  "shape": {
+    "num_timestamps": 34272,
+    "num_sensors": 207,
+    "total_observations": 7094304
+  },
+  "temporal_range": {
+    "start": "2012-03-01 00:00:00",
+    "end": "2012-06-27 23:55:00",
+    "interval_minutes": 5,
+    "irregular_interval_count": 0
+  },
+  "chronological_partitions": {
+    "train": {
+      "num_timestamps": 23990,
+      "start": "2012-03-01 00:00:00",
+      "end": "2012-05-23 07:05:00",
+      "percentage": 70.0
+    },
+    "validation": {
+      "num_timestamps": 3427,
+      "start": "2012-05-23 07:10:00",
+      "end": "2012-06-04 04:40:00",
+      "percentage": 10.0
+    },
+    "test": {
+      "num_timestamps": 6855,
+      "start": "2012-06-04 04:45:00",
+      "end": "2012-06-27 23:55:00",
+      "percentage": 20.0
+    }
+  },
+  "missingness_and_validity": {
+    "nan_count": 0,
+    "nan_ratio": 0.0,
+    "zero_count": 575302,
+    "zero_ratio": 0.081094,
+    "impossible_speed_gt_100_count": 0,
+    "valid_positive_measurements": 6519002,
+    "valid_positive_ratio": 0.918906,
+    "zero_interpretation": "Loop detector readings of 0.0 mph represent either real standstill congestion, sensor dropouts, or road closure. Valid evaluation masks strictly require >0.0 mph to prevent artificial distortion or division by zero, while causal imputations (forward-fill) are permitted strictly for historical feature lags."
+  },
+  "sensor_graph_alignment": {
+    "graph_sensor_ids_file_count": 207,
+    "hdf5_columns_count": 207,
+    "locations_sensor_count": 207,
+    "exact_sequence_match": true,
+    "locations_sequence_match": true,
+    "discrepancies": [],
+    "directed_adj_edges_count": 1722
+  },
+  "speed_statistics_valid": {
+    "min_valid_speed": 0.3333333333333333,
+    "max_speed": 70.0,
+    "mean_valid_speed": 58.46796994470586,
+    "median_valid_speed": 63.0,
+    "std_valid_speed": 10.301875345286772
+  }
+}
