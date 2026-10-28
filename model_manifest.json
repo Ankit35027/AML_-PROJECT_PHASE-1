@@ -1,0 +1,140 @@
+{
+  "execution_date": "2026-10-28",
+  "random_seed": 42,
+  "pilot_sensor_cohort": [
+    "773869",
+    "767541",
+    "717447",
+    "717816",
+    "765604",
+    "716339",
+    "765273",
+    "769402",
+    "767572",
+    "764424",
+    "718204",
+    "768066",
+    "767609",
+    "717490",
+    "718066"
+  ],
+  "cohort_size": 15,
+  "total_sensors_in_metr_la": 207,
+  "scope_disclosure": "Due to single-node evaluation benchmarks, the primary experimental results are established on a 15-sensor representative pilot cohort covering key Los Angeles freeway segments (I-5, I-10, I-405, SR-110). Metric tables are explicitly scoped to this pilot.",
+  "models": {
+    "Persistence": {
+      "parameters": 0,
+      "strategy": "Historical last-observed value y(t)"
+    },
+    "Ridge": {
+      "best_alphas": {
+        "15min": 100.0,
+        "30min": 0.1,
+        "60min": 0.1
+      },
+      "regularization": "L2 norm"
+    },
+    "XGBoost": {
+      "hyperparameters": {
+        "n_estimators": 250,
+        "max_depth": 6,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "n_jobs": -1,
+        "random_state": 42,
+        "tree_method": "hist",
+        "objective": "reg:squarederror",
+        "eval_metric": "mae"
+      },
+      "training_durations_sec": {
+        "15min": 1.8,
+        "30min": 1.5,
+        "60min": 1.44
+      }
+    }
+  },
+  "test_metrics_summary": [
+    {
+      "model": "Persistence",
+      "horizon": "15min",
+      "horizon_minutes": 15,
+      "mae": 3.0011,
+      "rmse": 5.5959,
+      "mape": 7.1167,
+      "valid_samples": 90149
+    },
+    {
+      "model": "Persistence",
+      "horizon": "30min",
+      "horizon_minutes": 30,
+      "mae": 3.6157,
+      "rmse": 7.2034,
+      "mape": 9.0366,
+      "valid_samples": 90149
+    },
+    {
+      "model": "Persistence",
+      "horizon": "60min",
+      "horizon_minutes": 60,
+      "mae": 4.7302,
+      "rmse": 9.666,
+      "mape": 12.6789,
+      "valid_samples": 90149
+    },
+    {
+      "model": "Ridge",
+      "horizon": "15min",
+      "horizon_minutes": 15,
+      "mae": 2.8789,
+      "rmse": 5.3466,
+      "mape": 7.4541,
+      "valid_samples": 90149
+    },
+    {
+      "model": "Ridge",
+      "horizon": "30min",
+      "horizon_minutes": 30,
+      "mae": 3.605,
+      "rmse": 6.844,
+      "mape": 10.1211,
+      "valid_samples": 90149
+    },
+    {
+      "model": "Ridge",
+      "horizon": "60min",
+      "horizon_minutes": 60,
+      "mae": 4.9066,
+      "rmse": 8.9476,
+      "mape": 15.0249,
+      "valid_samples": 90149
+    },
+    {
+      "model": "XGBoost",
+      "horizon": "15min",
+      "horizon_minutes": 15,
+      "mae": 2.5909,
+      "rmse": 4.8718,
+      "mape": 6.6763,
+      "valid_samples": 90149
+    },
+    {
+      "model": "XGBoost",
+      "horizon": "30min",
+      "horizon_minutes": 30,
+      "mae": 3.1668,
+      "rmse": 6.0589,
+      "mape": 8.6908,
+      "valid_samples": 90149
+    },
+    {
+      "model": "XGBoost",
+      "horizon": "60min",
+      "horizon_minutes": 60,
+      "mae": 4.0083,
+      "rmse": 7.5269,
+      "mape": 11.6398,
+      "valid_samples": 90149
+    }
+  ]
+}

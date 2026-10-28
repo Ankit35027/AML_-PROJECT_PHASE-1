@@ -1,0 +1,68 @@
+{
+  "project_title": "Historical METR-LA Traffic Speed Forecasting (Phase 1 Baseline & Classical ML System)",
+  "dataset": "METR-LA (Los Angeles County Highway Loop Detectors)",
+  "total_sensors": 207,
+  "pilot_sensors_count": 15,
+  "pilot_sensors": [
+    "773869", "767541", "717447", "717816", "765604",
+    "716339", "765273", "769402", "767572", "764424",
+    "718204", "768066", "767609", "717490", "718066"
+  ],
+  "timestamps_total": 34272,
+  "temporal_resolution": "5-minute intervals",
+  "temporal_span": {
+    "start": "2012-03-01 00:00:00",
+    "end": "2012-06-27 23:55:00"
+  },
+  "chronological_partitions": {
+    "train": {
+      "timestamps": 23990,
+      "ratio": 0.70,
+      "start": "2012-03-01 00:00:00",
+      "end": "2012-05-23 07:05:00",
+      "pilot_samples": 359505
+    },
+    "val": {
+      "timestamps": 3427,
+      "ratio": 0.10,
+      "start": "2012-05-23 07:10:00",
+      "end": "2012-06-04 04:40:00",
+      "pilot_samples": 51060
+    },
+    "test": {
+      "timestamps": 6855,
+      "ratio": 0.20,
+      "start": "2012-06-04 04:45:00",
+      "end": "2012-06-27 23:55:00",
+      "pilot_samples": 102480,
+      "valid_evaluated_targets_per_horizon": 90149
+    }
+  },
+  "evaluated_horizons": {
+    "15min": { "steps": 3, "minutes": 15 },
+    "30min": { "steps": 6, "minutes": 30 },
+    "60min": { "steps": 12, "minutes": 60 }
+  },
+  "test_metrics_summary": {
+    "15min": {
+      "Persistence": { "mae": 3.0011, "rmse": 5.5959, "mape": 7.1167 },
+      "Ridge":       { "mae": 2.8789, "rmse": 5.3466, "mape": 7.4541 },
+      "XGBoost":     { "mae": 2.5909, "rmse": 4.8718, "mape": 6.6763 }
+    },
+    "30min": {
+      "Persistence": { "mae": 3.6157, "rmse": 7.2034, "mape": 9.0366 },
+      "Ridge":       { "mae": 3.6050, "rmse": 6.8440, "mape": 10.1211 },
+      "XGBoost":     { "mae": 3.1668, "rmse": 6.0589, "mape": 8.6908 }
+    },
+    "60min": {
+      "Persistence": { "mae": 4.7302, "rmse": 9.6660, "mape": 12.6789 },
+      "Ridge":       { "mae": 4.9066, "rmse": 8.9476, "mape": 15.0249 },
+      "XGBoost":     { "mae": 4.0083, "rmse": 7.5269, "mape": 11.6398 }
+    }
+  },
+  "spatial_ablation_summary": {
+    "15min": { "isolated_mae": 2.5949, "spatial_neighbors_mae": 2.5464, "delta_mae": -0.0485 },
+    "30min": { "isolated_mae": 3.1736, "spatial_neighbors_mae": 3.0727, "delta_mae": -0.1009 },
+    "60min": { "isolated_mae": 4.0211, "spatial_neighbors_mae": 3.8112, "delta_mae": -0.2099 }
+  }
+}
