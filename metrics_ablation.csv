@@ -1,0 +1,7 @@
+feature_configuration,horizon,horizon_minutes,feature_count,mae,rmse,mape
+Isolated Sensor Lags,15min,15,21,2.5949,4.8789,6.685
+Isolated Sensor Lags,30min,30,21,3.1736,6.0692,8.7148
+Isolated Sensor Lags,60min,60,21,4.0211,7.54,11.6959
+With Spatial Neighbors,15min,15,30,2.5464,4.6589,6.4632
+With Spatial Neighbors,30min,30,30,3.0727,5.7577,8.3189
+With Spatial Neighbors,60min,60,30,3.8112,7.0303,10.9585
