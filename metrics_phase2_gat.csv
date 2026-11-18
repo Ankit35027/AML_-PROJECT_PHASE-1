@@ -1,0 +1,13 @@
+model,horizon,mae,rmse,mape,phase
+Persistence,15min,3.0011,5.5959,7.1167,Phase 1
+Ridge,15min,2.8789,5.3466,7.4541,Phase 1
+XGBoost,15min,2.5909,4.8718,6.6763,Phase 1
+ST-GAT (Ours),15min,2.4124,4.5812,6.1842,Phase 2
+Persistence,30min,3.6157,7.2034,9.0366,Phase 1
+Ridge,30min,3.605,6.844,10.1211,Phase 1
+XGBoost,30min,3.1668,6.0589,8.6908,Phase 1
+ST-GAT (Ours),30min,2.8945,5.512,7.821,Phase 2
+Persistence,60min,4.7302,9.666,12.6789,Phase 1
+Ridge,60min,4.9066,8.9476,15.0249,Phase 1
+XGBoost,60min,4.0083,7.5269,11.6398,Phase 1
+ST-GAT (Ours),60min,3.5821,6.7891,10.214,Phase 2
