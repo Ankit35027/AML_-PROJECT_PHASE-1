@@ -49,7 +49,7 @@ def compute_time_features(timestamps: pd.DatetimeIndex) -> np.ndarray:
     cos_tod = np.cos(2 * np.pi * time_of_day)
 
     # Day of week (0 to 6 over 7 days)
-    day_of_week = timestamps.dayofweek / 7.0
+    day_of_week = getattr(timestamps, "day_of_week", timestamps.dayofweek) / 7.0
     sin_dow = np.sin(2 * np.pi * day_of_week)
     cos_dow = np.cos(2 * np.pi * day_of_week)
 
