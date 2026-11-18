@@ -15,14 +15,11 @@
 
 ## 📌 Final Deliverables & Important Documents (`imp_DOCS/`)
 
-All official final defense documents for Phase 2 are located in [`imp_DOCS/`](imp_DOCS/):
+All official final defense documents are located in [`imp_DOCS/`](imp_DOCS/):
 
 | Document | File Path | Description |
 | :--- | :--- | :--- |
-| **Phase 2 Final IEEE Technical Report (PDF)** | [`imp_DOCS/Phase2_IEEE_Technical_Report.pdf`](imp_DOCS/Phase2_IEEE_Technical_Report.pdf) | Formal IEEE conference-format paper covering Phase 1 baselines & Phase 2 ST-GAT architecture. |
-| **Phase 2 Master Presentation Deck (PPTX)** | [`imp_DOCS/Phase2_ST_GAT_Presentation.pptx`](imp_DOCS/Phase2_ST_GAT_Presentation.pptx) | Concise, attractive 9-slide presentation deck (16:9) with embedded figures and Hinglish speaker notes. |
-| **4-Member Hinglish Defense Script** | [`imp_DOCS/SPEAKER_SCRIPT_HINGLISH.md`](imp_DOCS/SPEAKER_SCRIPT_HINGLISH.md) | Word-for-word conversational Hinglish script for each member (2-3 slides each) & examiner Q&As. |
-| **Phase 1 Master Presentation Deck (PPTX)** | [`presentation/AML_Phase1_Traffic_Prediction.pptx`](presentation/AML_Phase1_Traffic_Prediction.pptx) | 15-slide Phase 1 presentation deck with genuine empirical figures. |
+| **Official Final IEEE Technical Report (PDF)** | [`imp_DOCS/Phase2_ST_GAT_IEEE_Report.pdf`](imp_DOCS/Phase2_ST_GAT_IEEE_Report.pdf) | Official IEEE conference-format paper covering Phase 1 baselines & Phase 2 ST-GAT architecture. |
 | **Phase 2 Architectural Roadmap** | [`PHASE2_ROADMAP.md`](PHASE2_ROADMAP.md) | In-depth technical specification, mathematical formulations ($\alpha_{ij}$), and benchmark targets. |
 | **Phase 2 Task Board & Acceptance Tracker** | [`TASK_BOARD_PHASE2.md`](TASK_BOARD_PHASE2.md) | Workstream status, milestone deliverables, and acceptance criteria. |
 | **Team Contributions & Attribution Matrix** | [`CONTRIBUTIONS_PHASE2.md`](CONTRIBUTIONS_PHASE2.md) | Official 4-member Git attribution matrix and workstream breakdown. |
@@ -204,8 +201,7 @@ The Spatio-Temporal GAT model (64-unit Causal GRU + 4-Head Dynamic GAT Layer + M
 ```
 AML-Network-Project/
 ├── imp_DOCS/                        # Official Final Deliverables (Phase 2)
-│   ├── Phase2_IEEE_Technical_Report.pdf  # Final IEEE conference paper (PDF)
-│   └── Phase2_ST_GAT_Presentation.pptx   # Final presentation deck (PPTX)
+│   └── Phase2_ST_GAT_IEEE_Report.pdf     # Official Final IEEE Technical Report (PDF)
 ├── .github/workflows/ci.yml         # GitHub Actions CI workflow
 ├── 01_PROJECT_RUNBOOK.md            # Acceptance runbook specification
 ├── CONTRIBUTIONS_PHASE2.md          # 4-Member ethical attribution & workstream matrix
