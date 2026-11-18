@@ -1,12 +1,30 @@
 # Historical METR-LA Traffic Speed Forecasting
-## Phase 1 Baseline & Classical Machine Learning System
+## Phase 1 Classical Machine Learning & Phase 2 Spatio-Temporal Graph Attention Networks (ST-GAT)
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch 2.1+](https://img.shields.io/badge/PyTorch-2.1+-EE4C2C.svg)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B.svg)](https://streamlit.io/)
 
 **Parent Course / Program Title**: *Traffic Flow Prediction and Signal Control via Graph Attention Networks and Flow Models*  
-**Phase Scope**: Phase 1 Classical Machine Learning, Statistical Baselines, Multi-Horizon Evaluation, Honest Benchmarking, Streamlit Artifact Dashboard, IEEE Conference Manuscript, and Academic Presentation.
+**Project Scope**:
+- **Phase 1**: Classical Machine Learning, Statistical Baselines (Persistence, Ridge, XGBoost), Multi-Horizon Evaluation (+15m, +30m, +60m), Spatial Feature Ablation, Streamlit Artifact Dashboard.
+- **Phase 2**: Spatio-Temporal Graph Attention Networks (ST-GAT), Causal GRU Sequence Modeling, Dynamic Multi-Head Spatial Attention, PyTorch DataLoaders & Training Harness.
+
+---
+
+## 📌 Final Deliverables & Important Documents (`imp_DOCS/`)
+
+All official final defense documents for Phase 2 are located in [`imp_DOCS/`](imp_DOCS/):
+
+| Document | File Path | Description |
+| :--- | :--- | :--- |
+| **Phase 2 Final IEEE Technical Report (PDF)** | [`imp_DOCS/Phase2_IEEE_Technical_Report.pdf`](imp_DOCS/Phase2_IEEE_Technical_Report.pdf) | Formal IEEE conference-format paper covering Phase 1 baselines & Phase 2 ST-GAT architecture. |
+| **Phase 2 Master Presentation Deck (PPTX)** | [`imp_DOCS/Phase2_ST_GAT_Presentation.pptx`](imp_DOCS/Phase2_ST_GAT_Presentation.pptx) | Academic presentation deck with speaker notes and multi-horizon defense visualizers. |
+| **Phase 1 Master Presentation Deck (PPTX)** | [`presentation/AML_Phase1_Traffic_Prediction.pptx`](presentation/AML_Phase1_Traffic_Prediction.pptx) | 15-slide Phase 1 presentation deck with genuine empirical figures. |
+| **Phase 2 Architectural Roadmap** | [`PHASE2_ROADMAP.md`](PHASE2_ROADMAP.md) | In-depth technical specification, mathematical formulations ($\alpha_{ij}$), and benchmark targets. |
+| **Phase 2 Task Board & Acceptance Tracker** | [`TASK_BOARD_PHASE2.md`](TASK_BOARD_PHASE2.md) | Workstream status, milestone deliverables, and acceptance criteria. |
+| **Team Contributions & Attribution Matrix** | [`CONTRIBUTIONS_PHASE2.md`](CONTRIBUTIONS_PHASE2.md) | Official 4-member Git attribution matrix and workstream breakdown. |
 
 ---
 
@@ -24,12 +42,12 @@ In strict adherence to academic integrity and honest scientific reporting:
 
 ## 2. Four-Person Workstream Ownership Matrix
 
-| Workstream | Lead | Responsibilities | Core Deliverables | IEEE Manuscript Section |
-| :--- | :--- | :--- | :--- | :--- |
-| **WS1: Data & Provenance** | Member 1 | Data ingestion, lineage manifest, missingness audit, sensor alignment, EDA figures. | `src/data/loader.py`, `src/data/audit.py`, `notebooks/01_eda.py`, `data_audit.json`, `data_lineage.json` | Section III: Dataset & Provenance |
-| **WS2: Features & Baselines** | Member 2 | Causal window builder, split validation, persistence benchmark, Ridge baseline, unit tests. | `src/features/build_features.py`, `src/models/persistence.py`, `src/models/ridge_baseline.py`, `tests/` | Section IV: Methodology & Benchmarks |
-| **WS3: Models & Evaluation** | Member 3 | Multi-horizon XGBoost, validation tuning, spatial lag ablation, comprehensive metrics. | `src/models/train_xgboost.py`, `src/evaluation/metrics.py`, `src/evaluation/ablation.py`, `metrics_by_horizon.csv` | Section V: Experimental Results |
-| **WS4: Systems & Release** | Member 4 | Streamlit dashboard, automated pipeline, CI workflow, IEEE LaTeX paper, PPTX presentation, VIVA guide. | `app/streamlit_app.py`, `.github/workflows/ci.yml`, `reports/paper/`, `presentation/`, `VIVA_GUIDE.md` | Section I & VI: Intro, Deployment & Phase 2 |
+| Workstream | Lead Member | GitHub Handle | Responsibilities | Core Deliverables | IEEE Manuscript Section |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **WS1: Data & Provenance** | **Ankit Garg** | [`ankit35027`](https://github.com/ankit35027) | Data ingestion, lineage manifest, missingness audit, sensor alignment, PyTorch graph dataset. | `src/data/loader.py`, `src/models_phase2/graph_dataset.py`, `data_audit.json`, `data_lineage.json` | Section III: Dataset & Provenance |
+| **WS2: Features & GAT Architecture** | **Yashpal** | [`Yashpal-2004`](https://github.com/Yashpal-2004) | Causal window builder, Ridge baseline, single/multi-head GAT layer, PyTest validation. | `src/features/build_features.py`, `src/models_phase2/gat_layer.py`, `tests/test_phase2_gat.py` | Section IV: Methodology & GAT Formulation |
+| **WS3: Temporal Sequence & Models** | **Anshika** | [`anshika292005`](https://github.com/anshika292005) | Multi-horizon XGBoost, causal GRU backbone, multi-horizon direct heads, spatial ablation. | `src/models/train_xgboost.py`, `src/models_phase2/st_gat_model.py`, `metrics_by_horizon.csv` | Section V: Experimental Results & ST-GAT |
+| **WS4: Systems, Training & Release** | **Samriddhi Shah** | [`samriddhi-techy`](https://github.com/samriddhi-techy) | ST-GAT training harness, masked loss, Streamlit dashboard, IEEE LaTeX paper, PPTX presentation, VIVA guide. | `src/models_phase2/train_gat.py`, `app/streamlit_app.py`, `PHASE2_ROADMAP.md`, `VIVA_GUIDE.md` | Section I, VIII & IX: Intro, Systems & Release |
 
 ---
 
@@ -154,14 +172,19 @@ Evaluated on 90,149 valid target observations in the held-out test partition:
 
 ```
 AML-Network-Project/
+├── imp_DOCS/                        # Official Final Deliverables (Phase 2)
+│   ├── Phase2_IEEE_Technical_Report.pdf  # Final IEEE conference paper (PDF)
+│   └── Phase2_ST_GAT_Presentation.pptx   # Final presentation deck (PPTX)
 ├── .github/workflows/ci.yml         # GitHub Actions CI workflow
 ├── 01_PROJECT_RUNBOOK.md            # Acceptance runbook specification
-├── CONTRIBUTIONS.md                 # Ethical attribution & workstream matrix
-├── TASK_BOARD.md                    # Workstream deliverables & PR checklist
+├── CONTRIBUTIONS_PHASE2.md          # 4-Member ethical attribution & workstream matrix
+├── PHASE2_ROADMAP.md                # Phase 2 ST-GAT architectural roadmap & targets
+├── TASK_BOARD_PHASE2.md             # Workstream deliverables & task status
 ├── VIVA_GUIDE.md                    # Examiner defense guide & 15 Q&As
 ├── README.md                        # Master production documentation
 ├── pyproject.toml                   # Project metadata & pytest configuration
-├── requirements.txt                 # Pinned dependencies
+├── requirements.txt                 # Phase 1 pinned dependencies
+├── requirements_phase2.txt          # Phase 2 PyTorch & Deep Learning dependencies
 ├── data_audit.json                  # Missingness & split partition audit
 ├── data_lineage.json                # Cryptographic provenance & SHA-256 hashes
 ├── data_summary.json                # Verified experimental summary
@@ -175,7 +198,7 @@ AML-Network-Project/
 │   ├── raw/metr-la.h5               # Raw speed matrix (34,272 ts x 207 sensors)
 │   ├── sensor_graph/                # Distances, sensor IDs, adj_mx.pkl, locations
 │   └── processed/                   # Lightweight test demonstration slice
-├── models/                          # Serialized joblib model checkpoints
+├── models/                          # Serialized joblib & PyTorch model checkpoints
 ├── notebooks/
 │   └── 01_eda.py                    # Callable EDA script generating all figures
 ├── presentation/
@@ -191,10 +214,16 @@ AML-Network-Project/
 │   ├── data/loader.py, audit.py
 │   ├── features/build_features.py
 │   ├── models/persistence.py, ridge_baseline.py, train_xgboost.py
+│   ├── models_phase2/
+│   │   ├── gat_layer.py             # Multi-Head Graph Attention Network layer
+│   │   ├── st_gat_model.py          # End-to-end Spatio-Temporal GAT model (GRU + GAT)
+│   │   ├── graph_dataset.py         # PyTorch Graph DataLoader & chronological splits
+│   │   └── train_gat.py             # Phase 2 ST-GAT training harness & masked loss
 │   ├── evaluation/metrics.py, evaluate_all.py, ablation.py
 │   └── utils/config.py
 └── tests/
-    └── test_splits_and_leakage.py   # Pytest validation suite
+    ├── test_splits_and_leakage.py   # Phase 1 PyTest validation suite
+    └── test_phase2_gat.py           # Phase 2 ST-GAT PyTest validation suite
 ```
 
 ---

@@ -45,8 +45,10 @@ data/raw/*.zip
 models/heavy/
 *.pkl.tmp
 
-# Academic generated report PDF and presentation decks
+# Academic generated report PDF and presentation decks (allow imp_DOCS)
 *.pdf
+!imp_DOCS/
+!imp_DOCS/*.pdf
 presentation/AML_Full_Project_Phase1_and_Phase2.pptx
 presentation/generate_deck_full_project.py
 scripts/generate_ieee_pdf.py
