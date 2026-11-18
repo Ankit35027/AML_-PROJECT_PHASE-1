@@ -44,3 +44,9 @@ data/raw/*.zip
 # Model checkpoints / heavy temporary files (keep light sample artifacts)
 models/heavy/
 *.pkl.tmp
+
+# Academic generated report PDF and presentation decks
+*.pdf
+presentation/AML_Full_Project_Phase1_and_Phase2.pptx
+presentation/generate_deck_full_project.py
+scripts/generate_ieee_pdf.py

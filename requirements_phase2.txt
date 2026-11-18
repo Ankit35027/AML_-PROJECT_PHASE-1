@@ -1,0 +1,23 @@
+# Phase 2 Spatio-Temporal Graph Attention Network Dependencies
+# Built on top of Phase 1 requirements
+
+# Core Scientific & ML stack (from Phase 1)
+-r requirements.txt
+
+# Deep Learning & Graph Neural Networks
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# Optional PyG extensions (can run standalone PyTorch GAT without binaries)
+# torch-geometric>=2.4.0
+# torch-scatter
+# torch-sparse
+
+# Graph Analysis & Network Science
+networkx>=3.2.0
+
+# Experiment Tracking & Progress
+tqdm>=4.66.0
+tensorboard>=2.15.0
+
