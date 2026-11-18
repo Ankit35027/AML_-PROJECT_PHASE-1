@@ -20,7 +20,8 @@ All official final defense documents for Phase 2 are located in [`imp_DOCS/`](im
 | Document | File Path | Description |
 | :--- | :--- | :--- |
 | **Phase 2 Final IEEE Technical Report (PDF)** | [`imp_DOCS/Phase2_IEEE_Technical_Report.pdf`](imp_DOCS/Phase2_IEEE_Technical_Report.pdf) | Formal IEEE conference-format paper covering Phase 1 baselines & Phase 2 ST-GAT architecture. |
-| **Phase 2 Master Presentation Deck (PPTX)** | [`imp_DOCS/Phase2_ST_GAT_Presentation.pptx`](imp_DOCS/Phase2_ST_GAT_Presentation.pptx) | Academic presentation deck with speaker notes and multi-horizon defense visualizers. |
+| **Phase 2 Master Presentation Deck (PPTX)** | [`imp_DOCS/Phase2_ST_GAT_Presentation.pptx`](imp_DOCS/Phase2_ST_GAT_Presentation.pptx) | Concise, attractive 9-slide presentation deck (16:9) with embedded figures and Hinglish speaker notes. |
+| **4-Member Hinglish Defense Script** | [`imp_DOCS/SPEAKER_SCRIPT_HINGLISH.md`](imp_DOCS/SPEAKER_SCRIPT_HINGLISH.md) | Word-for-word conversational Hinglish script for each member (2-3 slides each) & examiner Q&As. |
 | **Phase 1 Master Presentation Deck (PPTX)** | [`presentation/AML_Phase1_Traffic_Prediction.pptx`](presentation/AML_Phase1_Traffic_Prediction.pptx) | 15-slide Phase 1 presentation deck with genuine empirical figures. |
 | **Phase 2 Architectural Roadmap** | [`PHASE2_ROADMAP.md`](PHASE2_ROADMAP.md) | In-depth technical specification, mathematical formulations ($\alpha_{ij}$), and benchmark targets. |
 | **Phase 2 Task Board & Acceptance Tracker** | [`TASK_BOARD_PHASE2.md`](TASK_BOARD_PHASE2.md) | Workstream status, milestone deliverables, and acceptance criteria. |
