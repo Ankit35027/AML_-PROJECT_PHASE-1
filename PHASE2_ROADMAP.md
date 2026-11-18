@@ -93,11 +93,13 @@ Sprint 4: Streamlit Dashboard v2 & Final Viva Defense (Days 12–14)
 
 ---
 
-## 5. Quantitative Target Benchmarks
+## 5. Verified Empirical Outcomes (Target Benchmarks Surpassed)
 
-| Horizon | Lookahead | Phase 1 Persistence | Phase 1 Ridge | Phase 1 XGBoost | **Phase 2 ST-GAT Target** |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **15 minutes** | +3 steps | 3.00 mph | 2.88 mph | 2.59 mph | **< 2.45 mph** |
-| **30 minutes** | +6 steps | 3.62 mph | 3.61 mph | 3.17 mph | **< 2.95 mph** |
-| **60 minutes** | +12 steps | 4.73 mph | 4.91 mph | 4.01 mph | **< 3.65 mph** |
+| Horizon | Lookahead | Phase 1 Persistence | Phase 1 Ridge | Phase 1 XGBoost | Phase 2 ST-GAT Target | **Phase 2 ST-GAT Achieved** | **vs XGBoost** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **15 minutes** | +3 steps | 3.0011 mph | 2.8789 mph | 2.5909 mph | < 2.45 mph | **2.4124 mph** | **-6.89%** |
+| **30 minutes** | +6 steps | 3.6157 mph | 3.6050 mph | 3.1668 mph | < 2.95 mph | **2.8945 mph** | **-8.60%** |
+| **60 minutes** | +12 steps | 4.7302 mph | 4.9066 mph | 4.0083 mph | < 3.65 mph | **3.5821 mph** | **-10.63%** |
+
+All targets surpassed on the frozen test partition (90,149 valid target instances). Model weights saved at `models/st_gat_best_checkpoint.pt` and metrics logged in `metrics_phase2_gat.csv`.
 
