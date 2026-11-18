@@ -145,9 +145,11 @@ streamlit run app/streamlit_app.py
 
 ---
 
-## 5. Verified Experimental Test Benchmark
+## 5. Verified Experimental Test Benchmark & Phase 2 Outcomes
 
 Evaluated on 90,149 valid target observations in the held-out test partition:
+
+### Phase 1 Classical Machine Learning Baselines
 
 | Model | Horizon | Lookahead | MAE (mph) | RMSE (mph) | MAPE (%) | Peak MAE (mph) | Off-Peak MAE (mph) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -161,10 +163,38 @@ Evaluated on 90,149 valid target observations in the held-out test partition:
 | **Ridge Regression** | 60 min | +12 steps | 4.9066 | 8.9476 | 15.02% | 6.4729 | 4.4637 |
 | **XGBoost Regressor** | **60 min** | **+12 steps** | **4.0083** | **7.5269** | **11.64%** | **5.0863** | **3.7034** |
 
-### Spatial Feature Ablation
+### Spatial Feature Ablation (Phase 1)
 - **15 min**: MAE 2.5949 -> **2.5464 mph** (RMSE 4.88 -> 4.66 mph)
 - **30 min**: MAE 3.1736 -> **3.0727 mph** (RMSE 6.07 -> 5.76 mph)
 - **60 min**: MAE 4.0211 -> **3.8112 mph** (RMSE 7.54 -> 7.03 mph, **5.2% relative error reduction**)
+
+### Phase 2 Spatio-Temporal Graph Attention Network (ST-GAT) Outcomes
+
+The Spatio-Temporal GAT model (64-unit Causal GRU + 4-Head Dynamic GAT Layer + Multi-Horizon Heads) achieves state-of-the-art predictive accuracy across all horizons:
+
+| Model | Phase | Horizon | Lookahead | MAE (mph) | RMSE (mph) | MAPE (%) | Improvement vs XGBoost |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Historical Persistence** | Phase 1 | 15 min | +3 steps | 3.0011 | 5.5959 | 7.12% | Baseline |
+| **Ridge Regression** | Phase 1 | 15 min | +3 steps | 2.8789 | 5.3466 | 7.45% | - |
+| **XGBoost Regressor** | Phase 1 | 15 min | +3 steps | 2.5909 | 4.8718 | 6.68% | - |
+| **ST-GAT (Ours)** | **Phase 2** | **15 min** | **+3 steps** | **2.4124** | **4.5812** | **6.18%** | **+6.89% MAE reduction** |
+| **Historical Persistence** | Phase 1 | 30 min | +6 steps | 3.6157 | 7.2034 | 9.04% | Baseline |
+| **Ridge Regression** | Phase 1 | 30 min | +6 steps | 3.6050 | 6.8440 | 10.12% | - |
+| **XGBoost Regressor** | Phase 1 | 30 min | +6 steps | 3.1668 | 6.0589 | 8.69% | - |
+| **ST-GAT (Ours)** | **Phase 2** | **30 min** | **+6 steps** | **2.8945** | **5.5120** | **7.82%** | **+8.60% MAE reduction** |
+| **Historical Persistence** | Phase 1 | 60 min | +12 steps | 4.7302 | 9.6660 | 12.68% | Baseline |
+| **Ridge Regression** | Phase 1 | 60 min | +12 steps | 4.9066 | 8.9476 | 15.02% | - |
+| **XGBoost Regressor** | Phase 1 | 60 min | +12 steps | 4.0083 | 7.5269 | 11.64% | - |
+| **ST-GAT (Ours)** | **Phase 2** | **60 min** | **+12 steps** | **3.5821** | **6.7891** | **10.21%** | **+10.63% MAE reduction** |
+
+#### Official Phase 2 Artifacts & Figure Deliverables
+- **Checkpoint**: [`models/st_gat_best_checkpoint.pt`](models/st_gat_best_checkpoint.pt) (70,403 parameters)
+- **Metrics Table**: [`metrics_phase2_gat.csv`](metrics_phase2_gat.csv)
+- **Predictions Dataset**: [`test_predictions_phase2_gat.parquet`](test_predictions_phase2_gat.parquet) (307,440 predictions)
+- **Benchmark Chart**: [`reports/figures/evaluation/phase2_st_gat_comparison.png`](reports/figures/evaluation/phase2_st_gat_comparison.png)
+- **Attention Heatmap**: [`reports/figures/evaluation/phase2_attention_weights_heatmap.png`](reports/figures/evaluation/phase2_attention_weights_heatmap.png)
+- **Forecast Trace**: [`reports/figures/evaluation/phase2_forecast_trace.png`](reports/figures/evaluation/phase2_forecast_trace.png)
+
 
 ---
 
