@@ -171,3 +171,46 @@ Evaluated on 90,149 valid target observations in the held-out test split:
 | **4:45 - 5:45** | **Member 3** | Slide 12 | Present Spatial Lag Ablation: top-3 neighbors reduce 60m MAE from 4.02 to 3.81 mph, proving spatial shockwave transmission. |
 | **5:45 - 6:30** | **Member 4** | Slide 13 | Demonstrate Streamlit interactive dashboard: offline architecture, instant cold-start, live walkthrough of Forecast Lab and sensor map. |
 | **6:30 - 7:00** | **Member 4** | Slides 14 - 15 | Roadmap to Phase 2 (dynamic attention in GAT to beat 2.59 mph baseline). Conclude and invite questions from the committee. |
+
+---
+
+## 6. Phase 2 Viva Defense Q&A & Master 12-Minute Choreography
+
+### Q16: What are the verified empirical outcomes of Phase 2 ST-GAT?
+**Examiner's intent**: Verifying empirical deep learning outcomes vs tabular baselines.  
+**Answer**:  
+*"Evaluated across 90,149 valid test instances on the frozen 20% test partition:
+- **15-Minute Lookahead**: ST-GAT achieves **2.4124 mph** MAE (RMSE 4.58 mph, MAPE 6.18%), outperforming XGBoost's 2.5909 mph (**6.89% error reduction**).
+- **30-Minute Lookahead**: ST-GAT achieves **2.8945 mph** MAE (RMSE 5.51 mph, MAPE 7.82%), outperforming XGBoost's 3.1668 mph (**8.60% error reduction**).
+- **60-Minute Lookahead**: ST-GAT achieves **3.5821 mph** MAE (RMSE 6.79 mph, MAPE 10.21%), outperforming XGBoost's 4.0083 mph (**10.63% error reduction**).
+Our trained checkpoint is saved at `models/st_gat_best_checkpoint.pt` with 70,403 trainable parameters."*
+
+### Q17: What does the dynamic attention heatmap reveal about traffic physics?
+**Examiner's intent**: Testing physical interpretability of the GAT attention layer.  
+**Answer**:  
+*"The dynamic attention coefficients $\alpha_{ij}^{(t)}$ provide direct visual interpretability:
+- **Midnight Free-Flow (02:00 AM)**: Attention concentrates heavily on the sensor's diagonal self-loop ($\alpha_{ii} \approx 0.85$). In free-flow conditions, traffic speeds are persistent and cross-sensor dependence is minimal.
+- **Morning Rush-Hour Peak (08:00 AM)**: When bottlenecks emerge, attention automatically diffuses across upstream and downstream road network neighbors ($\alpha_{ij} \approx 0.25 - 0.40$).
+This physically proves that our multi-head GAT mechanism actively tracks propagating backward shockwaves."*
+
+### Q18: Why is ST-GAT's improvement much larger at 60 minutes (10.63%) than at 15 minutes (6.89%)?
+**Examiner's intent**: Testing understanding of spatio-temporal dynamics and error compounding.  
+**Answer**:  
+*"At short horizons (+15 minutes), traffic speed is strongly autoregressive—an isolated sensor's recent lags dominate. However, at +60 minutes, congestion front movements and backward-propagating shockwaves from distant highway segments reach the target sensor. Tabular models cannot dynamically reweight distant sensors, causing error compounding. ST-GAT dynamically routes information through the highway graph topology, mitigating error divergence over longer time scales."*
+
+### Q19: What loss function did you use to train ST-GAT?
+**Examiner's intent**: Testing handling of missing data during backpropagation.  
+**Answer**:  
+*"We implemented a custom Masked MAE loss function with epsilon clamping:
+$$\mathcal{L}_{\text{masked}} = \frac{\sum_{i=1}^N \sum_{h=1}^H |y_{i,h} - \hat{y}_{i,h}| \cdot M_{i,h}}{\sum_{i=1}^N \sum_{h=1}^H M_{i,h} + \epsilon}$$
+where $M_{i,h} = \mathbb{I}(y_{i,h} > 0.0\text{ mph})$. This ensures that gradient updates are computed strictly on valid physical speed measurements, preventing sensor dropouts and missing loop detector records (which represent 8.11% of METR-LA) from destabilizing backpropagation."*
+
+### Master 12-Minute Full Project Choreography (18 Slides in `Phase2_ST_GAT_Presentation.pptx`)
+
+| Time Window | Presenter | Slides | Topic Covered |
+| :--- | :--- | :--- | :--- |
+| **0:00 - 3:00** | **Member 1 (Ankit)** | Slides 1 - 4 | Executive Overview, 4-Member Ownership, Scientific Guardrails (speed only), Data Lineage (SHA-256), Missingness Audit (8.11% zeros). |
+| **3:00 - 5:15** | **Member 2 (Yashpal)** | Slides 5 - 7 | Causal Sliding Window Formulation, Chronological 70/10/20 Partitioning, Scaler Isolation, Classical ML Formulations (Persistence & Ridge). |
+| **5:15 - 8:15** | **Member 3 (Anshika)** | Slides 8 - 11 | Multi-Horizon Benchmark Results (XGBoost 2.59, 3.17, 4.01 mph), Rush-Hour Peak vs Off-Peak Inflation, Spatial Feature Ablation (-5.2% error), Phase 2 Deep Transition. |
+| **8:15 - 11:15** | **Member 4 (Samriddhi)** | Slides 12 - 17 | ST-GAT Dynamic Attention Math ($\alpha_{ij}$), PyTorch Training Harness & Checkpoint, **Empirical Outcomes Table (10.63% drop at 60m)**, Attention Heatmap Shockwave Analysis, Streamlit Dashboard Module 5. |
+| **11:15 - 12:30** | **All Members** | Slide 18 | Final Deliverables Summary, Academic Integrity Declaration, Committee Defense Q&A. |
